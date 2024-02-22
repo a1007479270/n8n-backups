@@ -1,0 +1,249 @@
+{
+  "active": false,
+  "connections": {
+    "微信Webhook": {
+      "main": [
+        [
+          {
+            "node": "判断:抖音链接",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "抖音视频解析": {
+      "main": [
+        [
+          {
+            "node": "处理：接收方微信用户名",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "判断:抖音链接": {
+      "main": [
+        [
+          {
+            "node": "抖音视频解析",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "微信回复视频链接": {
+      "main": [
+        [
+          {
+            "node": "微信回复视频文件",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "处理：接收方微信用户名": {
+      "main": [
+        [
+          {
+            "node": "微信回复视频链接",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "OpenAI Assistant",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-21T05:43:38.489Z",
+  "id": "dtjZ5fLS5Mms8eHS",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "微信自动化 copy",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=https://api.cooluc.com/?url= {{ $json.body.content }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "71f01f4b-8195-4157-be9c-122ecc59c510",
+      "name": "抖音视频解析",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1760,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "9caaad2c-e190-4f02-bc3a-dc7eb33aaed2",
+        "options": {}
+      },
+      "id": "01d0f47c-e784-46e1-93ba-56b7ad7f03e0",
+      "name": "微信Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        1260,
+        360
+      ],
+      "webhookId": "c3a2e714-717c-4097-b3e6-4f48d9e20e3c"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b1d0a944-e265-483f-b751-a05d431ad36e",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "v.douyin.com/",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "555a3842-7a17-47a3-8751-e83248583311",
+      "name": "判断:抖音链接",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理：接收方微信用户名').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"type\":\"fileUrl\",\"content\":\"{{ $('抖音视频解析').item.json[\"video\"] }}\"}} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "c3b2ba0b-bab1-47be-810c-6306eca1638d",
+      "name": "微信回复视频文件",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2440,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"content\":\" {{ $('抖音视频解析').item.json[\"msg\"] }}，视频标题>>> {{ $('抖音视频解析').item.json[\"desc\"] }}，视频链接>>>{{ $('抖音视频解析').item.json[\"video\"] }}\"}} ",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "ae144911-28b9-4d53-93b4-84274d60f54a",
+      "name": "微信回复视频链接",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2220,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $('判断:抖音链接').item.json.body.source }}",
+        "include": "none",
+        "options": {}
+      },
+      "id": "cecd81e2-b751-41f5-be98-dde7c28761b4",
+      "name": "处理：接收方微信用户名",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1980,
+        360
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "f27910f9-1bb5-45c4-a907-e2537ceb8401",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        620
+      ],
+      "webhookId": "4b91e920-a1ae-41d7-8081-0704df07dcc6"
+    },
+    {
+      "parameters": {
+        "nativeTools": [
+          "retrieval"
+        ],
+        "options": {
+          "baseURL": "https://api.openai.com/v1"
+        }
+      },
+      "id": "96d7cc18-3c79-4ac5-a237-0b8aaa53da23",
+      "name": "OpenAI Assistant",
+      "type": "@n8n/n8n-nodes-langchain.openAiAssistant",
+      "typeVersion": 1,
+      "position": [
+        2380,
+        620
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-22T08:14:20.000Z",
+  "versionId": "7d4e8cb8-61b6-46d9-981d-854baa9256bb"
+}
