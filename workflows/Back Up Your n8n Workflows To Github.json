@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "n8n": {
       "main": [
@@ -178,7 +178,8 @@
   "createdAt": "2024-02-22T08:35:13.013Z",
   "id": "iHaL39Eb90IztPy9",
   "meta": {
-    "templateId": "1534"
+    "templateId": "1534",
+    "templateCredsSetupCompleted": true
   },
   "name": "Back Up Your n8n Workflows To Github",
   "nodes": [
@@ -208,7 +209,7 @@
       "type": "n8n-nodes-base.github",
       "position": [
         1680,
-        300
+        340
       ],
       "typeVersion": 1,
       "alwaysOutputData": true,
@@ -299,7 +300,13 @@
         2740,
         440
       ],
-      "typeVersion": 1
+      "typeVersion": 1,
+      "credentials": {
+        "githubApi": {
+          "id": "H1GbxEhhIveT9zeN",
+          "name": "GitHub account"
+        }
+      }
     },
     {
       "parameters": {
@@ -317,7 +324,13 @@
         2740,
         620
       ],
-      "typeVersion": 1
+      "typeVersion": 1,
+      "credentials": {
+        "githubApi": {
+          "id": "H1GbxEhhIveT9zeN",
+          "name": "GitHub account"
+        }
+      }
     },
     {
       "parameters": {
@@ -339,7 +352,7 @@
           "string": [
             {
               "name": "repo.owner",
-              "value": "n8n-io"
+              "value": "a1007479270"
             },
             {
               "name": "repo.name",
@@ -477,7 +490,7 @@
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2024-02-22T08:47:12.000Z",
-  "versionId": "d06ee508-e3b0-4b94-8bf5-459d06a73715"
+  "triggerCount": 1,
+  "updatedAt": "2024-02-22T09:28:49.000Z",
+  "versionId": "0eff4f7b-fe55-4749-8c5d-3733d5ef8ebd"
 }
