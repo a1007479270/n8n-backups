@@ -1,0 +1,354 @@
+{
+  "active": false,
+  "connections": {
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "筛选或合并",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS Read1": {
+      "main": [
+        [
+          {
+            "node": "筛选或合并",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "RSS Read3": {
+      "main": [
+        [
+          {
+            "node": "筛选或合并",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "筛选或合并": {
+      "main": [
+        [
+          {
+            "node": "发送mataroa博客",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Spreadsheet File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "企业微信配置inotify或其它通知件",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "DeepL翻译",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spreadsheet File": {
+      "main": [
+        [
+          {
+            "node": "Google云盘",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS信息": {
+      "main": [
+        [
+          {
+            "node": "筛选或合并",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "发送mataroa博客": {
+      "main": [
+        [
+          {
+            "node": "Telegram频道",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google云盘": {
+      "main": [
+        [
+          {
+            "node": "Telegram频道1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "定时运行器": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS信息",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-20T14:29:10.853Z",
+  "id": "atuMGBcULLGjV5Nt",
+  "meta": null,
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "ad91127c-ef18-4ed8-bb76-2f7a86757d5c",
+      "name": "RSS Read",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [
+        560,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "48c0e475-a8c3-4db8-b5fb-6a5219918376",
+      "name": "RSS Read1",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [
+        560,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "70ab183f-69a8-47dc-b2ef-601cecb9f7bb",
+      "name": "RSS Read3",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [
+        560,
+        260
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "591843b3-fb0a-4775-9114-45da1c96a403",
+      "name": "筛选或合并",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        800,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toFile",
+        "options": {}
+      },
+      "id": "b6f7feb3-0303-4a45-a700-794e07c35a93",
+      "name": "Spreadsheet File",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 1,
+      "position": [
+        980,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "eb5643e6-03ce-4c1c-8357-395d8b0b6066",
+      "name": "RSS信息",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [
+        560,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://mataroa.blog/api/posts/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "按官方添加token"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "title",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "name": "body",
+              "value": "={{ $json['content:encoded'] }}"
+            },
+            {
+              "name": "date",
+              "value": "={{ $json.isoDate }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "445b43ae-78a4-49bd-84d6-ae3e0678b4d0",
+      "name": "发送mataroa博客",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "514b00a5-8950-4d0e-a65c-807d42ee615c",
+      "name": "Google云盘",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "sendChatAction"
+      },
+      "id": "ab17b6b6-52da-4255-b573-3c786113c8a1",
+      "name": "Telegram频道",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "sendChatAction"
+      },
+      "id": "20e3e53d-b26f-4167-82df-c8016e2a04a7",
+      "name": "Telegram频道1",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "id": "6bc982ec-09c0-4648-bf8c-4286e74b46fe",
+      "name": "定时运行器",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        360,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "cfa5f2ed-ca0b-46b9-acb2-e6d497f2b001",
+      "name": "企业微信配置inotify或其它通知件",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1260,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "id": "62035709-916b-4cca-8c32-cdfc29ed4565",
+      "name": "DeepL翻译",
+      "type": "n8n-nodes-base.deepL",
+      "typeVersion": 1,
+      "position": [
+        980,
+        240
+      ],
+      "disabled": true
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-02-20T17:41:10.000Z",
+  "versionId": "4fb9ad10-43cf-4c3e-82cd-740aa7898beb"
+}
