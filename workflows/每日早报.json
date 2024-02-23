@@ -1,0 +1,208 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "转换为北京本地时间",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "转换为北京本地时间": {
+      "main": [
+        [
+          {
+            "node": "提取年月日",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "提取年月日": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "转化为json数据",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "转化为json数据": {
+      "main": [
+        [
+          {
+            "node": "微信回复：视频链接",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-22T10:29:45.527Z",
+  "id": "uNHOrLKDOGLjGwJB",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "每日早报",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "id": "e8044a4c-acb7-4c4f-83bf-e6c5c4c77a21",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        860,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://cdn.jsdelivr.net/gh/WangGuibin/weather-action@master/logs/{{ $json.formattedDate }}.txt",
+        "options": {}
+      },
+      "id": "b2a675b6-bd7b-4223-a158-c6f65d712801",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1560,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "outputFieldName": "=rq",
+        "options": {
+          "timezone": "Asia/Shanghai"
+        }
+      },
+      "id": "e1536916-98b2-482a-a6a7-035010d576c1",
+      "name": "转换为北京本地时间",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.rq }}",
+        "format": "yyyy-MM-dd",
+        "options": {}
+      },
+      "id": "085da51f-c1ab-44d5-9b5a-5e4a99f421c0",
+      "name": "提取年月日",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "deta",
+              "stringValue": "={{JSON.stringify($json.data)}}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "c7a32710-5522-4291-b8c8-da3719575df4",
+      "name": "转化为json数据",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1800,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"to\": \"新一℡¹⁵⁶⁷⁸⁹⁹⁸⁴¹⁷\",\n    \"type\": \"text\",\n    \"content\": \"{{JSON.stringify($json[\"deta\"])}}\"",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "93b0adc1-5c20-45b3-a78f-4f88fdd85eec",
+      "name": "微信回复：视频链接",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2000,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"to\": \"文件传输助手\",\n    \"type\": \"text\",\n    \"content\": \"Hello World!\"\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "b6fd0da2-2c8f-4784-8e38-a2816423b2d4",
+      "name": "微信回复：视频链接1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1720,
+        -60
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-02-22T15:31:02.000Z",
+  "versionId": "c7b382d0-0455-415d-9fe5-8fb1f1f48bf5"
+}
