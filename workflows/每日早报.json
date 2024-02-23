@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Schedule Trigger": {
       "main": [
@@ -27,18 +27,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "转化为json数据",
+            "node": "回去慧语简报",
             "type": "main",
             "index": 0
           }
@@ -49,7 +38,18 @@
       "main": [
         [
           {
-            "node": "微信回复：视频链接",
+            "node": "微信回复",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "回去慧语简报": {
+      "main": [
+        [
+          {
+            "node": "转化为json数据",
             "type": "main",
             "index": 0
           }
@@ -80,20 +80,6 @@
       "typeVersion": 1.1,
       "position": [
         860,
-        160
-      ]
-    },
-    {
-      "parameters": {
-        "url": "=https://cdn.jsdelivr.net/gh/WangGuibin/weather-action@master/logs/{{ $json.formattedDate }}.txt",
-        "options": {}
-      },
-      "id": "b2a675b6-bd7b-4223-a158-c6f65d712801",
-      "name": "HTTP Request",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        1560,
         160
       ]
     },
@@ -135,7 +121,7 @@
           "values": [
             {
               "name": "deta",
-              "stringValue": "={{JSON.stringify($json.data)}}"
+              "stringValue": "={{ $json.data }}"
             }
           ]
         },
@@ -149,7 +135,8 @@
       "position": [
         1800,
         160
-      ]
+      ],
+      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -157,7 +144,7 @@
         "url": "http://192.168.2.200:3001/webhook/msg",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n    \"to\": \"新一℡¹⁵⁶⁷⁸⁹⁹⁸⁴¹⁷\",\n    \"type\": \"text\",\n    \"content\": \"{{JSON.stringify($json[\"deta\"])}}\"",
+        "jsonBody": "={\n    \"to\": \"新一℡¹⁵⁶⁷⁸⁹⁹⁸⁴¹⁷\",\n    \"type\": \"text\",\n    \"content\": {{JSON.stringify($json[\"deta\"])}}\n}",
         "options": {
           "redirect": {
             "redirect": {}
@@ -165,7 +152,7 @@
         }
       },
       "id": "93b0adc1-5c20-45b3-a78f-4f88fdd85eec",
-      "name": "微信回复：视频链接",
+      "name": "微信回复",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
@@ -175,24 +162,16 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "http://192.168.2.200:3001/webhook/msg",
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n    \"to\": \"文件传输助手\",\n    \"type\": \"text\",\n    \"content\": \"Hello World!\"\n}",
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        }
+        "url": "=https://cdn.jsdelivr.net/gh/WangGuibin/weather-action@master/logs/2024-02-22.txt",
+        "options": {}
       },
-      "id": "b6fd0da2-2c8f-4784-8e38-a2816423b2d4",
-      "name": "微信回复：视频链接1",
+      "id": "b2a675b6-bd7b-4223-a158-c6f65d712801",
+      "name": "回去慧语简报",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1720,
-        -60
+        1560,
+        160
       ]
     }
   ],
@@ -200,9 +179,13 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2024-02-22T15:31:02.000Z",
-  "versionId": "c7b382d0-0455-415d-9fe5-8fb1f1f48bf5"
+  "triggerCount": 1,
+  "updatedAt": "2024-02-23T04:58:24.000Z",
+  "versionId": "546988db-e665-458e-bd17-7140d2549bb1"
 }
