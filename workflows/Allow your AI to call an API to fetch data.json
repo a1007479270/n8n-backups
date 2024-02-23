@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "Call the API": {
-      "main": [
-        [
-          {
-            "node": "Set 'response' value",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "GPT4 Model 1": {
       "ai_languageModel": [
         [
@@ -100,22 +89,22 @@
         ]
       ]
     },
-    "Chat Trigger": {
+    "Work out activity type and number of people": {
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Call the API",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Work out activity type and number of people": {
+    "Chat Trigger": {
       "main": [
         [
           {
-            "node": "Call the API",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
@@ -286,7 +275,7 @@
     {
       "parameters": {
         "options": {
-          "baseURL": "https://uu.ci/v1"
+          "baseURL": "https://api.openai.one/v1"
         }
       },
       "id": "f65054a9-771c-47f8-94cc-4ed766f89d19",
@@ -299,15 +288,15 @@
       "typeVersion": 1,
       "credentials": {
         "openAiApi": {
-          "id": "cS488tA0912XkKn3",
-          "name": "OpenAi account"
+          "id": "Z0zPcRB4TroIt0w7",
+          "name": "OpenAi account 2"
         }
       }
     },
     {
       "parameters": {
         "options": {
-          "baseURL": "https://uu.ci/v1"
+          "baseURL": "https://api.openai.one/v1"
         }
       },
       "id": "94c2a6d8-cab9-48c2-8801-4306f0957f50",
@@ -320,16 +309,15 @@
       "typeVersion": 1,
       "credentials": {
         "openAiApi": {
-          "id": "cS488tA0912XkKn3",
-          "name": "OpenAi account"
+          "id": "Z0zPcRB4TroIt0w7",
+          "name": "OpenAi account 2"
         }
       }
     },
     {
       "parameters": {
-        "model": "gpt-4",
         "options": {
-          "baseURL": "https://uu.ci/v1"
+          "baseURL": "https://api.openai.one/v1"
         }
       },
       "id": "5f423800-2eaf-43f5-bd59-dc1212cb55ad",
@@ -342,8 +330,8 @@
       "typeVersion": 1,
       "credentials": {
         "openAiApi": {
-          "id": "cS488tA0912XkKn3",
-          "name": "OpenAi account"
+          "id": "Z0zPcRB4TroIt0w7",
+          "name": "OpenAi account 2"
         }
       }
     },
@@ -442,8 +430,20 @@
     },
     {
       "parameters": {
+        "prompt": "={{ $('Execute Workflow Trigger').item.json.chatInput }}"
+      },
+      "id": "d7d5455c-2e46-4896-853c-6b527e9403e4",
+      "name": "Work out activity type and number of people",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        660,
+        920
+      ],
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
         "public": true,
-        "mode": "webhook",
         "options": {}
       },
       "id": "f262f04b-964c-47c0-b7dc-a86b82b0184b",
@@ -458,7 +458,7 @@
     },
     {
       "parameters": {
-        "text": "={{ $json.chatInput }}",
+        "text": "=请使用中文回答:\n{{ $json.chatInput }}",
         "options": {}
       },
       "id": "716dea0d-a987-4cf7-ae4a-bf0f7c7d7da9",
@@ -469,43 +469,15 @@
         320
       ],
       "typeVersion": 1.1
-    },
-    {
-      "parameters": {
-        "prompt": "={{ $('Execute Workflow Trigger').item.json.chatInput }}"
-      },
-      "id": "d7d5455c-2e46-4896-853c-6b527e9403e4",
-      "name": "Work out activity type and number of people",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "position": [
-        660,
-        920
-      ],
-      "typeVersion": 1.3
     }
   ],
-  "pinData": {
-    "Chat Trigger": [
-      {
-        "json": {
-          "name": "First item",
-          "code": 1
-        }
-      },
-      {
-        "json": {
-          "name": "Second item",
-          "code": 2
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-02-22T09:34:49.000Z",
-  "versionId": "344d4496-bb5f-4f6c-a75e-8100b2e08076"
+  "updatedAt": "2024-02-23T06:44:19.000Z",
+  "versionId": "2f909eaf-1256-42e4-b165-b869852a81c3"
 }
