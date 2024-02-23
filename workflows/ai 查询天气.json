@@ -1,0 +1,670 @@
+{
+  "active": false,
+  "connections": {
+    "CONFIG": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is error?": {
+      "main": [
+        [
+          {
+            "node": "Stringify error message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Exctract HTML Body",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simplify?": {
+      "main": [
+        [
+          {
+            "node": "Simplify output",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Convert to Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Is error?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "QUERY_PARAMS": {
+      "main": [
+        [
+          {
+            "node": "CONFIG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simplify output": {
+      "main": [
+        [
+          {
+            "node": "Convert to Markdown",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "ReAct AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove extra tags": {
+      "main": [
+        [
+          {
+            "node": "Simplify?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Exctract HTML Body": {
+      "main": [
+        [
+          {
+            "node": "Remove extra tags",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to Markdown": {
+      "main": [
+        [
+          {
+            "node": "Send Page Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "地区编码查询1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On new manual Chat Message": {
+      "main": [
+        [
+          {
+            "node": "ReAct AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "地区编码查询": {
+      "main": [
+        [
+          {
+            "node": "免费天气查询",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "地区编码查询1": {
+      "main": [
+        [
+          {
+            "node": "免费天气查询1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tq_Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "ReAct AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "免费天气查询1": {
+      "main": [
+        [
+          {
+            "node": "Send Page Content1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-23T15:25:39.630Z",
+  "id": "MZPRIM5mVD8pa4qz",
+  "meta": {
+    "templateId": "2006",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "ai 查询天气",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "fbb7f2ce-9685-451d-ab16-bfcd1031246c",
+      "name": "On new manual Chat Message",
+      "type": "@n8n/n8n-nodes-langchain.manualChatTrigger",
+      "position": [
+        423,
+        376
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {
+          "baseURL": "https://api.openai.one/v1",
+          "frequencyPenalty": 0.3,
+          "temperature": 0.7,
+          "timeout": 300000
+        }
+      },
+      "id": "257995ba-457b-48be-84cf-d695b8c385e2",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        643,
+        596
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "Z0zPcRB4TroIt0w7",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ encodeURI($json.query.url) }}",
+        "options": {
+          "allowUnauthorizedCerts": true,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "id": "d76447e9-242b-410a-89e7-ccb37f28d004",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1440,
+        900
+      ],
+      "typeVersion": 4.1,
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "HTML",
+              "stringValue": "={{ $json?.data.match(/<body[^>]*>([\\s\\S]*?)<\\/body>/i)[1] }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "includeFields": "HTML",
+        "options": {}
+      },
+      "id": "70cda5f7-42c6-4722-91c3-7708abd61258",
+      "name": "Exctract HTML Body",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1840,
+        1200
+      ],
+      "typeVersion": 3.2
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.hasOwnProperty('error') }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "9c9806c5-ba63-4469-bea0-3210739f32f8",
+      "name": "Is error?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1640,
+        900
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "page_content",
+              "stringValue": "={{ $('QUERY_PARAMS').first()?.json?.query?.url == null ? \"INVALID action_input. This should be an HTTP query string like this: \\\"?url=VALIDURL&method=SELECTEDMETHOD\\\". Only a simple string value is accepted. JSON object as an action_input is NOT supported!\" : JSON.stringify($json.error) }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "includeFields": "HTML",
+        "options": {}
+      },
+      "id": "94ed6365-2ffa-4851-8a7a-2c965e9c99bb",
+      "name": "Stringify error message",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2500,
+        420
+      ],
+      "typeVersion": 3.2
+    },
+    {
+      "parameters": {},
+      "id": "17d4e1e5-53d2-4d04-a8fd-b84efa032b99",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        880,
+        600
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "HTML",
+              "stringValue": "={{ ($json.HTML || \"HTML BODY CONTENT FOR THIS SEARCH RESULT IS NOT AVAILABLE\").replace(/<script[^>]*>([\\s\\S]*?)<\\/script>|<style[^>]*>([\\s\\S]*?)<\\/style>|<noscript[^>]*>([\\s\\S]*?)<\\/noscript>|<!--[\\s\\S]*?-->|<iframe[^>]*>([\\s\\S]*?)<\\/iframe>|<object[^>]*>([\\s\\S]*?)<\\/object>|<embed[^>]*>([\\s\\S]*?)<\\/embed>|<video[^>]*>([\\s\\S]*?)<\\/video>|<audio[^>]*>([\\s\\S]*?)<\\/audio>|<svg[^>]*>([\\s\\S]*?)<\\/svg>/ig, '')}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "955ec37d-1ed4-47d6-b406-71ae621c4049",
+      "name": "Remove extra tags",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2040,
+        1200
+      ],
+      "typeVersion": 3.2
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "HTML",
+              "stringValue": "={{ $json.HTML.replace(/href\\s*=\\s*\"(.+?)\"/gi, 'href=\"NOURL\"').replace(/src\\s*=\\s*\"(.+?)\"/gi, 'src=\"NOIMG\"')}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7d020720-2d39-4462-ad93-7350483b1bab",
+      "name": "Simplify output",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2420,
+        1100
+      ],
+      "notesInFlow": true,
+      "typeVersion": 3.2,
+      "notes": "remove links and image URLs"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $('CONFIG').first()?.json?.query?.method }}",
+              "operation": "contains",
+              "value2": "simplif"
+            }
+          ]
+        }
+      },
+      "id": "11c64dc8-8913-4851-94ff-42f69e11830c",
+      "name": "Simplify?",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        2240,
+        1200
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "query",
+              "type": "objectValue",
+              "objectValue": "={{ $json.query.substring($json.query.indexOf('?') + 1).split('&').reduce((result, item) => (result[item.split('=')[0]] = decodeURIComponent(item.split('=')[1]), result), {}) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c3e4ff39-6376-4328-b3b9-00d6da7e2758",
+      "name": "QUERY_PARAMS",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1040,
+        900
+      ],
+      "typeVersion": 3.2
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "query.maxlimit",
+              "type": "numberValue",
+              "numberValue": "={{ $json?.query?.maxlimit == null ? 70000 : Number($json?.query?.maxlimit) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "367a1a4f-c052-4678-9790-09fd0abb5450",
+      "name": "CONFIG",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1240,
+        900
+      ],
+      "typeVersion": 3.2
+    },
+    {
+      "parameters": {
+        "content": "### Convert the query string into JSON, apply the limit for a page length",
+        "height": 235.79999999999995,
+        "width": 556.25
+      },
+      "id": "141d049c-c4a1-4217-9c82-200d90f2c942",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        381,
+        834
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Send an error message:\n1. If query param was incorrect, return the instruction. AI Agent should pick up on this and adapt the query on the next iteration.\n2. If the query is OK and an error was during the HTTP Request, then send back the original error message.",
+        "height": 285.7,
+        "width": 491
+      },
+      "id": "2f90621f-05a6-4d9a-8ad1-6772692b76e6",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2100,
+        420
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Post-processing of the HTML page:\n1. Keep only <BODY> content\n2. Remove inline <SCRIPT> tag entirely, as well as: NOSCRIPT, IFRAME, OBJECT, EMBED, VIDEO, AUDIO, SVG, and HTML comments.\n3. In case query parameter method=simplified, replace all page URLs (a href) and IMG (src) with NOURL / NOIMG - this may save up to 20% of the page length\n4. Convert the remaining HTML to Markdown. This step further reduces the length of the page: long HTML tags and styles are eliminated, but the markdown syntax keeps some page structure. This gives much better results compared to just a blank text.\n5. Finally, check the page length. If it's too long, send an \"ERROR: PAGE CONTENT TOO LONG\" instead of the actual page. Of course, you could split the page content in chunks, but sometimes long pages just don't have a needed content, so it makes little sense to burn tokens on them.",
+        "height": 472.5,
+        "width": 1200
+      },
+      "id": "09290e54-a93e-40a6-86cf-5c6753d45cec",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1780,
+        880
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "## Example ReAct AI Agent\n1. Agent Prompt is default\n2. Check the description of the HTTP_Request_Tool, it guides the agent to provide a query string with several parameters instead of a JSON object",
+        "height": 483.0226244343891,
+        "width": 616.8597285067872
+      },
+      "id": "9a26092f-2b16-4cc4-ac45-589517d38a90",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -80,
+        320
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "html": "={{ $json.HTML }}",
+        "destinationKey": "page_content",
+        "options": {}
+      },
+      "id": "090612a5-291e-4629-a60a-1ed05034fdc3",
+      "name": "Convert to Markdown",
+      "type": "n8n-nodes-base.markdown",
+      "position": [
+        2600,
+        1200
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "page_content",
+              "stringValue": "={{ $json.page_content.length < $('CONFIG').first()?.json?.query?.maxlimit ? $json.page_content : \"ERROR: PAGE CONTENT TOO LONG\" }}"
+            },
+            {
+              "name": "page_length",
+              "type": "numberValue",
+              "numberValue": "={{ $json.page_content.length }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "029d0dd8-70ef-4501-9452-b3f2e722f982",
+      "name": "Send Page Content",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        2800,
+        1200
+      ],
+      "typeVersion": 3.2
+    },
+    {
+      "parameters": {
+        "url": "https://geoapi.qweather.com/v2/city/lookup?location=%E5%8D%97%E6%BA%AA&key=41e87bd10ea74c61a07774a1f7795e2c",
+        "options": {}
+      },
+      "id": "7f355021-2542-47f1-b170-91018834f5a2",
+      "name": "地区编码查询",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2060,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=http://t.weather.itboy.net/api/weather/city/{{ $json.location[0].id }}",
+        "options": {}
+      },
+      "id": "4de68958-d23c-4d29-a762-faab853f96de",
+      "name": "免费天气查询",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2300,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://geoapi.qweather.com/v2/city/lookup?location=%E5%8D%97%E6%BA%AA&key=41e87bd10ea74c61a07774a1f7795e2c",
+        "options": {}
+      },
+      "id": "8e40338f-a8c3-4d46-83c2-5c964a20a686",
+      "name": "地区编码查询1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1100,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=http://t.weather.itboy.net/api/weather/city/{{ $json.location[0].id }}",
+        "options": {}
+      },
+      "id": "a734ebe6-1798-4025-89a2-1a45ef366c76",
+      "name": "免费天气查询1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1340,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "name": "Tq_Tool",
+        "description": "调用此工具以获取天气内容。输入应该是一个字符串化的HTTP查询参数，如下所示：“地区名”。“地区名”参数应包含有效的地区名称。可以是市名，可以是区名，可以是县名。",
+        "workflowId": "={{ $workflow.id }}",
+        "responsePropertyName": "page_content"
+      },
+      "id": "418180a3-23d8-42f9-8001-2e01c96585a1",
+      "name": "Tq_Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "position": [
+        763,
+        596
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "page_content",
+              "stringValue": "={{ $json.data }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "527ff105-e1d9-4ea1-b99e-c0ce645fc49e",
+      "name": "Send Page Content1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1560,
+        600
+      ],
+      "typeVersion": 3.2
+    },
+    {
+      "parameters": {
+        "agent": "reActAgent",
+        "options": {
+          "humanMessageTemplate": "{input}\n\n{agent_scratchpad}",
+          "prefix": "Answer the following questions as best you can. You have access to the following tools:",
+          "suffixChat": "Begin! Reminder to always use the exact characters `Final Answer` when responding.",
+          "suffix": "Begin!\n\n\tQuestion: {input}\n\tThought:{agent_scratchpad}"
+        }
+      },
+      "id": "70c2a0fe-a9cf-4ef5-a4b1-36b88c264fc1",
+      "name": "ReAct AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        643,
+        376
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "settings": {},
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-02-23T16:40:01.000Z",
+  "versionId": "fca2dd3e-c6e7-4c46-99fc-57fc1f70b3db"
+}
