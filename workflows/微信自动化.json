@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "微信Webhook": {
       "main": [
@@ -134,11 +134,194 @@
         ]
       ]
     },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Conversational Agent": {
       "main": [
         [
           {
             "node": "微信回复:ai回答",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "提取:抖音分享网址1": {
+      "main": [
+        [
+          {
+            "node": "解析:抖音视频1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "判断:是否有抖音链接1": {
+      "main": [
+        [
+          {
+            "node": "提取:抖音分享网址1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI：数据入参处理1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "微信回复：视频链接1": {
+      "main": [
+        [
+          {
+            "node": "微信回复：视频文件1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "解析:抖音视频1": {
+      "main": [
+        [
+          {
+            "node": "微信回复：视频链接1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI：数据入参处理1": {
+      "main": [
+        [
+          {
+            "node": "Conversational Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SerpAPI1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat OpenAI1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "开启指定群消息": {
+      "main": [
+        [
+          {
+            "node": "开启被@后回复",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "开启被@后回复": {
+      "main": [
+        [
+          {
+            "node": "判断:是否有抖音链接1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "判断：群消息": {
+      "main": [
+        [
+          {
+            "node": "开启指定群消息",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversational Agent1": {
+      "main": [
+        [
+          {
+            "node": "微信回复:ai回答1",
             "type": "main",
             "index": 0
           }
@@ -164,8 +347,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1.1,
       "position": [
-        1260,
-        360
+        1300,
+        560
       ],
       "webhookId": "9caaad2c-e190-4f02-bc3a-dc7eb33aaed2"
     },
@@ -188,8 +371,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2720,
-        20
+        2580,
+        100
       ]
     },
     {
@@ -210,6 +393,15 @@
                 "operation": "notExists",
                 "singleValue": true
               }
+            },
+            {
+              "id": "7f87d051-521c-4ac5-9a0e-5e3a27fd2f24",
+              "leftValue": "={{ $json.body.isSystemEvent }}",
+              "rightValue": "=0",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
             }
           ],
           "combinator": "and"
@@ -227,39 +419,6 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "8348d7c2-bd0a-4669-8984-26b0e7e8fd75",
-              "leftValue": "={{ $json.room.payload.topic }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "5b086e0c-cecc-4504-b879-3d0dde8894b8",
-      "name": "判断：群消息",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        1740,
-        760
-      ]
-    },
-    {
-      "parameters": {
         "mode": "raw",
         "jsonOutput": "={{ $json.body.source }}",
         "options": {}
@@ -270,7 +429,7 @@
       "typeVersion": 3.2,
       "position": [
         1500,
-        360
+        560
       ]
     },
     {
@@ -282,7 +441,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
       "position": [
         2780,
-        600
+        580
       ],
       "typeVersion": 1,
       "credentials": {
@@ -348,8 +507,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
-        2200,
-        580
+        2300,
+        360
       ]
     },
     {
@@ -401,8 +560,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
-        2460,
-        20
+        2300,
+        100
       ]
     },
     {
@@ -423,8 +582,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3000,
-        20
+        2860,
+        100
       ]
     },
     {
@@ -445,8 +604,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3280,
-        20
+        3140,
+        100
       ]
     },
     {
@@ -467,13 +626,37 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3020,
-        360
+        3140,
+        340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3006e48c-044f-413a-afff-0e7f877fcbb9",
+      "name": "Wikipedia",
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "position": [
+        2880,
+        580
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "81f1e654-07ab-4bd7-ba30-53c497be410f",
+      "name": "Calculator",
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        2980,
+        600
       ]
     },
     {
       "parameters": {
-        "options": {}
+        "options": {
+          "systemMessage": "Assistant is a large language model trained by OpenAI.\n\nAssistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.\n\nAssistant is constantly learning and improving, and its capabilities are constantly evolving. It is able to process and understand large amounts of text, and can use this knowledge to provide accurate and informative responses to a wide range of questions. Additionally, Assistant is able to generate its own text based on the input it receives, allowing it to engage in discussions and provide explanations and descriptions on a wide range of topics.\n\nOverall, Assistant is a powerful system that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.\n最后以中文来对话。"
+        }
       },
       "id": "6c2d9f90-cfd6-4607-9e3d-592cd05cb31c",
       "name": "Conversational Agent",
@@ -481,6 +664,364 @@
       "position": [
         2540,
         360
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b1d0a944-e265-483f-b751-a05d431ad36e",
+              "leftValue": "={{ $('微信Webhook').item.json.body.content }}",
+              "rightValue": "https://v.douyin.com/\\w{6,11}/",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "b48c6548-b716-4868-8d81-f6dbff7ba03d",
+      "name": "判断:是否有抖音链接1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.cooluc.com/?url= {{ $json.body.content }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f595c03c-2087-4da3-b63b-93981313c9ba",
+      "name": "解析:抖音视频1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2580,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "body.content",
+              "stringValue": "={{ $json.body.content.extractUrl() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "81a11cef-401d-44b8-a6d2-153acc285815",
+      "name": "提取:抖音分享网址1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2300,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "uid",
+              "stringValue": "={{ $json.from.payload.name }}"
+            },
+            {
+              "name": "input",
+              "stringValue": "={{ $json.body.content.substring(6) }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "cca1ead3-5b4f-462e-810c-872523607297",
+      "name": "AI：数据入参处理1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2300,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"room\"][\"payload\"][\"topic\"] }}\",\n\"isRoom\": true,\n\"data\":{\"content\":\" {{ $json[\"msg\"] }}，视频标题>>> {{$json[\"desc\"] }}，视频链接>>>{{$json[\"video\"] }}\"}\n} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "b66f25ca-1228-47d2-a699-b7cb6bfb8073",
+      "name": "微信回复：视频链接1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2840,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"room\"][\"payload\"][\"topic\"] }}\",\"isRoom\": true,\"data\":{\"type\":\"fileUrl\",\"content\":\"{{ $('解析:抖音视频1').item.json[\"video\"] }}\"}} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "57c39f1a-4790-4729-a0c8-57e74a4a34e7",
+      "name": "微信回复：视频文件1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3140,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "gl": "cn",
+          "hl": "zh-cn"
+        }
+      },
+      "id": "b63b76aa-0bd3-4e2f-a971-da959a36bf65",
+      "name": "SerpAPI1",
+      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
+      "position": [
+        2780,
+        1340
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "serpApi": {
+          "id": "4bAaYYshjUk98FCT",
+          "name": "SerpAPI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "baseURL": "https://api.openai.one/v1"
+        }
+      },
+      "id": "573e4a61-194b-48e2-bd77-b24f69d0091b",
+      "name": "Chat OpenAI1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        2480,
+        1340
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "Z0zPcRB4TroIt0w7",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionKey": "=chat_history_{{ $json.uid }}"
+      },
+      "id": "ad7f780f-cf10-4554-91af-dec6a710d23c",
+      "name": "Window Buffer Memory1",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        2620,
+        1340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"room\"][\"payload\"][\"topic\"] }}\",\n\"isRoom\": true,\n\"data\":{\"content\":\"@{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }} {{ $json[\"output\"] }}\"}\n}\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "432b82ba-becf-4c61-bd7c-2e68536d2165",
+      "name": "微信回复:ai回答1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3140,
+        1100
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5c188be8-80fd-4744-a0aa-597f36a6eb72",
+      "name": "Wikipedia1",
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "position": [
+        2880,
+        1340
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "a106de15-6c52-466d-a9b5-d2d0b8956b7f",
+      "name": "Calculator1",
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        2980,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "fd7ff80d-a72c-48d7-8608-ade6661cad85",
+              "leftValue": "={{ $json.room.payload.topic }}",
+              "rightValue": "我自己",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "c70714df-680a-455f-aa7b-813b6959ca35",
+      "name": "开启指定群消息",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "fd7ff80d-a72c-48d7-8608-ade6661cad85",
+              "leftValue": "={{ $json.body.isMentioned }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "1fb3604d-8df9-48d2-b633-c3370e650255",
+      "name": "开启被@后回复",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8348d7c2-bd0a-4669-8984-26b0e7e8fd75",
+              "leftValue": "={{ $json.room.payload.topic }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5b086e0c-cecc-4504-b879-3d0dde8894b8",
+      "name": "判断：群消息",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Assistant is a large language model trained by OpenAI.\n\nAssistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.\n\nAssistant is constantly learning and improving, and its capabilities are constantly evolving. It is able to process and understand large amounts of text, and can use this knowledge to provide accurate and informative responses to a wide range of questions. Additionally, Assistant is able to generate its own text based on the input it receives, allowing it to engage in discussions and provide explanations and descriptions on a wide range of topics.\n\nOverall, Assistant is a powerful system that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.\n最后以中文来对话。"
+        }
+      },
+      "id": "e7a9fd4d-f478-4b10-ad3d-dc589a069f4b",
+      "name": "Conversational Agent1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        2540,
+        1100
       ],
       "typeVersion": 1
     }
@@ -492,6 +1033,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-02-22T09:48:46.000Z",
-  "versionId": "376adb38-747b-4cbd-a5d2-618c365dd17f"
+  "updatedAt": "2024-02-23T11:58:20.000Z",
+  "versionId": "0c2950f8-36af-4f9f-a001-83e3f20ade27"
 }
