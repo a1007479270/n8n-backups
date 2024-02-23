@@ -1,0 +1,123 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-22T15:17:19.330Z",
+  "id": "Ua6GqjFUgQDRmjXO",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "38 21 * * *"
+            }
+          ]
+        }
+      },
+      "id": "5b907f15-85bb-4f5b-8bb4-6001dcb432b3",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        700,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://news.topurl.cn/api?count=15",
+        "options": {}
+      },
+      "id": "ab52dcd0-f83f-43a7-b770-a4b949f653c6",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "=json",
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "jsonBody": "={\"to\":\"新一℡¹⁵⁶⁷⁸⁹⁹⁸⁴¹⁷\",\"data\":{\"type\": \"text\" ,\"content\":\" 上午好，今天是{{ $json.data.calendar.lYear }}年{{ $json.data.calendar.cMonth }}月 {{$json.data.calendar.cDay }}日 {{ $json.data.calendar.ncWeek }}\n今天的新闻有：\n一、{{ $json.data.newsList[0].title }} {{ $json.data.newsList[0].url }}\n二、{{ $json.data.newsList[1].title }} {{ $json.data.newsList[1].url }}\n三、{{ $json.data.newsList[2].title }} {{ $json.data.newsList[2].url }}\n四、{{ $json.data.newsList[3].title }} {{ $json.data.newsList[3].url }}\n五、{{ $json.data.newsList[4].title }} {{ $json.data.newsList[4].url }}\n六、{{ $json.data.newsList[5].title }} {{ $json.data.newsList[5].url }}\n七、{{ $json.data.newsList[6].title }} {{ $json.data.newsList[6].url }}\n八、{{ $json.data.newsList[7].title }} {{ $json.data.newsList[7].url }}\n九、{{ $json.data.newsList[8].title }} {{ $json.data.newsList[8].url }}\n十、{{ $json.data.newsList[9].title }} {{ $json.data.newsList[9].url }}\n十一、{{ $json.data.newsList[10].title }} {{ $json.data.newsList[10].url }}\n十二、{{ $json.data.newsList[11].title }} {{ $json.data.newsList[11].url }} \n十三、{{ $json.data.newsList[12].title }} {{ $json.data.newsList[12].url }} \n十四、{{ $json.data.newsList[13].title }} {{ $json.data.newsList[13].url }} \n祝您今日生活愉快，工作顺利！\"}} ",
+        "options": {}
+      },
+      "id": "a657bc26-0412-4386-9685-33a05214e4e6",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"\",\"data\":{\"content\":\" \"}} ",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "137a238c-40d7-4847-98d4-7c4db56989eb",
+      "name": "微信回复：视频链接",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        100
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-02-22T15:43:52.000Z",
+  "versionId": "a8c8e82c-c354-4554-86ac-7963ad128edf"
+}
