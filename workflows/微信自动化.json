@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "微信Webhook": {
       "main": [
@@ -57,6 +57,11 @@
             "node": "Conversational Agent",
             "type": "ai_tool",
             "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_tool",
+            "index": 0
           }
         ]
       ]
@@ -68,6 +73,11 @@
             "node": "Conversational Agent",
             "type": "ai_languageModel",
             "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_languageModel",
+            "index": 0
           }
         ]
       ]
@@ -77,6 +87,11 @@
         [
           {
             "node": "Conversational Agent",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
             "type": "ai_memory",
             "index": 0
           }
@@ -141,6 +156,11 @@
             "node": "Conversational Agent",
             "type": "ai_tool",
             "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_tool",
+            "index": 0
           }
         ]
       ]
@@ -150,6 +170,11 @@
         [
           {
             "node": "Conversational Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
             "type": "ai_tool",
             "index": 0
           }
@@ -229,61 +254,6 @@
         ]
       ]
     },
-    "SerpAPI1": {
-      "ai_tool": [
-        [
-          {
-            "node": "Conversational Agent1",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Chat OpenAI1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Conversational Agent1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Window Buffer Memory1": {
-      "ai_memory": [
-        [
-          {
-            "node": "Conversational Agent1",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wikipedia1": {
-      "ai_tool": [
-        [
-          {
-            "node": "Conversational Agent1",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Calculator1": {
-      "ai_tool": [
-        [
-          {
-            "node": "Conversational Agent1",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "开启指定群消息": {
       "main": [
         [
@@ -322,6 +292,55 @@
         [
           {
             "node": "微信回复:ai回答1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "地区编码查询1": {
+      "main": [
+        [
+          {
+            "node": "免费天气查询",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tq_Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "天气工作流": {
+      "main": [
+        [
+          {
+            "node": "地区编码查询1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "免费天气查询": {
+      "main": [
+        [
+          {
+            "node": "整理内容",
             "type": "main",
             "index": 0
           }
@@ -626,7 +645,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3140,
+        3360,
         340
       ]
     },
@@ -648,8 +667,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        2980,
-        600
+        3000,
+        580
       ]
     },
     {
@@ -662,7 +681,7 @@
       "name": "Conversational Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "position": [
-        2540,
+        2620,
         360
       ],
       "typeVersion": 1
@@ -1020,10 +1039,116 @@
       "name": "Conversational Agent1",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "position": [
-        2540,
-        1100
+        2620,
+        720
       ],
       "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "qun",
+              "value": "={\n\"to\":\"1111,ddd\",\n\"isRoom\": \"12222\",\"data\":\"type\":\"333\"\n} \n\n"
+            },
+            {
+              "name": "repo.name",
+              "value": "n8n-backups"
+            },
+            {
+              "name": "repo.path",
+              "value": "workflows/"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "60863f80-e94e-47bb-a455-b839a6faafec",
+      "name": "群变量",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1760,
+        640
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "https://geoapi.qweather.com/v2/city/lookup?location=%E5%8D%97%E6%BA%AA&key=41e87bd10ea74c61a07774a1f7795e2c",
+        "options": {}
+      },
+      "id": "1901748f-1f0e-482a-8349-6628f3e93f07",
+      "name": "地区编码查询1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3880,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "name": "Tq_Tool",
+        "description": "调用此工具以获取天气内容。输入应该是一个字符串化的HTTP查询参数，如下所示：“地区名”。“地区名”参数应包含有效的地区名称。可以是市名，可以是区名，可以是县名。",
+        "workflowId": "={{ $workflow.id }}",
+        "responsePropertyName": "page_content"
+      },
+      "id": "1b97e210-7768-469d-9897-f1171b4a4c9d",
+      "name": "Tq_Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "position": [
+        3103,
+        576
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "4c4e7992-0496-4421-9753-b6e58551d140",
+      "name": "天气工作流",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        3700,
+        100
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "=http://t.weather.itboy.net/api/weather/city/{{ $json.location[0].id }}",
+        "options": {}
+      },
+      "id": "a07c3e11-6080-404e-8b7c-dace5f0aeeda",
+      "name": "免费天气查询",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4120,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "page_content",
+              "stringValue": "={{ $json.data }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "b4bda66b-e50f-4e72-9333-e43c269635d7",
+      "name": "整理内容",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        4340,
+        100
+      ],
+      "typeVersion": 3.2
     }
   ],
   "pinData": {},
@@ -1033,6 +1158,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-02-23T11:58:20.000Z",
-  "versionId": "0c2950f8-36af-4f9f-a001-83e3f20ade27"
+  "updatedAt": "2024-02-23T17:02:11.000Z",
+  "versionId": "dd33d1dc-cfcf-4882-a3a9-87d2ffe863a0"
 }
