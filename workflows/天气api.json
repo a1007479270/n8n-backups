@@ -1,0 +1,177 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-23T06:57:42.218Z",
+  "id": "nYQGbu9dvczzkzhl",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "天气api",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "3d5d09af-12d6-4519-a212-d438d7287b39",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "outputFieldName": "={{\"\" + $now}}",
+        "options": {}
+      },
+      "id": "446a9e35-5643-403a-8ba6-835b5a527cf6",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1260,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "url": "http://t.weather.itboy.net/api/weather/city/101271104",
+        "options": {}
+      },
+      "id": "9c20510e-fea8-460f-94dd-702147d13a75",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1220,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://d1.weather.com.cn/sk_2d/101271104.html?_=\n{{\"\" + $now}}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "33a591df-53d1-41b5-a822-e17faacc1c47",
+      "name": "中国天气网查询",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1480,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "### // 处理返回的 json 格式的数据并拼接成字符串\n// 老苏只处理了当天的数据\n\nshidu = items[0].json.data.shidu;\npm25 = items[0].json.data.pm25;\npm10 = items[0].json.data.pm10;\nquality = items[0].json.data.quality;\nwendu = items[0].json.data.wendu;\nganmao = items[0].json.data.ganmao;\nhigh = items[0].json.data.forecast[0].high.replace(/\\s*/g, '');\nlow = items[0].json.data.forecast[0].low.replace(/\\s*/g, '');\nfx = items[0].json.data.forecast[0].fx;\nfl = items[0].json.data.forecast[0].fl;\ntype = items[0].json.data.forecast[0].type;\nymd = items[0].json.data.forecast[0].ymd;\nweek = items[0].json.data.forecast[0].week;\n\nvar yubao = \"天气预报：\n今天是\" + ymd + \"，\" + week + \"，今天天气\" + type + \"。最\" + high + \"度，最\" + low + \"度，风向\" + fx + \"，风力\" + fl + \"，空气质量\" + quality + \"，湿度\" + shidu + \"，\" + ganmao;\n\n// 调试用的\n//console.log(encodeURIComponent(yubao).replace(/'/g,\"%27\").replace(/\"/g,\"%22\"));\n\n// 中文写回到到 json 中\nitems[0].json.yubao = yubao;\n// urlencode 后写回到到 json 中\n//items[0].json.yubaoe = encodeURIComponent(yubao).replace(/'/g,\"%27\").replace(/\"/g,\"%22\");\n\nreturn items;"
+      },
+      "id": "aa0857b6-5249-4d72-9974-8e1d141f0d14",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://i.tq121.com.cn/j/wap2016/news/city_search_data.js?2022",
+        "options": {}
+      },
+      "id": "b36845ea-b027-4783-9683-0a4bda6252a0",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1920,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "/data/diqu.txt",
+        "dataPropertyName": "= {{ $json.data }}",
+        "options": {}
+      },
+      "id": "4e534c40-2f34-4eb6-b62d-97084011e12a",
+      "name": "Read/Write Files from Disk",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://m.weather.com.cn/data/101190101.html",
+        "options": {}
+      },
+      "id": "0e712d99-a9e4-4e46-82fd-327dffb58c65",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1740,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-02-23T07:51:40.000Z",
+  "versionId": "4f69c513-3a63-45f2-9781-e98a2c348507"
+}
