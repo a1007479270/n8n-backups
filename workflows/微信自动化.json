@@ -66,22 +66,6 @@
         ]
       ]
     },
-    "Chat OpenAI": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Conversational Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "Conversational Agent1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Window Buffer Memory": {
       "ai_memory": [
         [
@@ -346,6 +330,22 @@
           }
         ]
       ]
+    },
+    "Chat OpenAI2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-02-20T12:08:21.717Z",
@@ -453,7 +453,10 @@
     },
     {
       "parameters": {
-        "options": {}
+        "options": {
+          "gl": "cn",
+          "hl": "zh-cn"
+        }
       },
       "id": "633b8923-416b-4bcc-9cbf-f9d97ff38551",
       "name": "SerpAPI",
@@ -1149,15 +1152,40 @@
         100
       ],
       "typeVersion": 3.2
+    },
+    {
+      "parameters": {
+        "options": {
+          "baseURL": "https://ai.tentech.top/v1"
+        }
+      },
+      "id": "56d6ec50-b2c9-419c-87e6-fc8dc0c6e7fb",
+      "name": "Chat OpenAI2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        2320,
+        580
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "openAiApi": {
+          "id": "ZMrKkLOoC9Llwkiz",
+          "name": "OpenAi account 3"
+        }
+      }
     }
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timezone": "Asia/Shanghai",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "saveExecutionProgress": true
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-02-23T17:02:11.000Z",
-  "versionId": "dd33d1dc-cfcf-4882-a3a9-87d2ffe863a0"
+  "updatedAt": "2024-02-24T18:55:19.000Z",
+  "versionId": "7802c68f-0ac4-4381-a6c7-704a22eb57d8"
 }
