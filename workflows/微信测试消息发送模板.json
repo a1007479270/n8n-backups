@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "转换为北京本地时间",
+            "node": "随机网名",
             "type": "main",
             "index": 0
           }
@@ -50,6 +50,65 @@
         [
           {
             "node": "转化为json数据",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "微信回复2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "随机网名": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
             "type": "main",
             "index": 0
           }
@@ -192,8 +251,246 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1420,
+        1920,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "name",
+              "stringValue": "={{ $json }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "6c093fbd-6dba-45b4-9849-0225b10712b3",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1780,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "name",
+              "stringValue": "={{JSON.stringify($json)}}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "70c72e66-1478-44ff-b8bd-ce5ca28565c8",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1560,
         460
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "name1111",
+        "options": {}
+      },
+      "id": "2673ba62-1215-4922-a0fd-e2ed4478d1dd",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2020,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "730e6971-4917-4ecd-9267-9c67e023a0b6",
+              "leftValue": "={{ $json.name1111 }}",
+              "rightValue": "=四",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b1d4254f-689f-4900-b8b7-a63aa214974a",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "730e6971-4917-4ecd-9267-9c67e023a0b6",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "=四",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "61e7f844-6442-4f20-a48a-6b30ce6825ee",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"to\": \"新一℡¹⁵⁶⁷⁸⁹⁹⁸⁴¹⁷\",\n    \"type\": \"text\",\n    \"content\": \"{{ $json[\"name\"] }}\"\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "e5cf1e33-3d4a-4e4a-8280-8cec368d338b",
+      "name": "微信回复2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1960,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://static.res.qq.com/nav/qbtool/resource/nick.json",
+        "options": {}
+      },
+      "id": "56b92ba0-fc47-4ae1-b26a-bfe6ad49d27e",
+      "name": "随机网名",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1120,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "730e6971-4917-4ecd-9267-9c67e023a0b6",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "={{ $json.name.quote() }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c75e09b8-fff1-45fe-bedf-7b9bef683afe",
+      "name": "Filter2",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        920
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "name",
+              "stringValue": "={{ $json.name.quote() }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "c7e7b110-855e-4f7c-b821-a45f0763545d",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2020,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0b3d1399-e308-4f50-a314-adaf8d2e09d3",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1560,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "id": "4e84c8cd-1fa3-417a-a06f-ddef1ba7e2c5",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        980
       ]
     }
   ],
@@ -211,6 +508,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-02-25T06:49:58.000Z",
-  "versionId": "5745ee53-af65-42be-9a8d-bc42db9d1e9f"
+  "updatedAt": "2024-02-26T13:44:50.000Z",
+  "versionId": "2ae4c148-ea63-44bf-bf17-d6ba1ac88fbc"
 }
