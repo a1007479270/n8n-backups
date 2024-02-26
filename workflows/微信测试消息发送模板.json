@@ -1,0 +1,216 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "转换为北京本地时间",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "转换为北京本地时间": {
+      "main": [
+        [
+          {
+            "node": "提取年月日",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "提取年月日": {
+      "main": [
+        [
+          {
+            "node": "回去慧语简报",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "转化为json数据": {
+      "main": [
+        [
+          {
+            "node": "微信回复",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "回去慧语简报": {
+      "main": [
+        [
+          {
+            "node": "转化为json数据",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-25T06:48:01.754Z",
+  "id": "V9gK5ZXUp0EgZDGG",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "微信测试消息发送模板",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "id": "dbbe0b50-5370-4f0d-8072-7078f3bc7007",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        860,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "outputFieldName": "=rq",
+        "options": {
+          "timezone": "Asia/Shanghai"
+        }
+      },
+      "id": "40287bf4-09f9-4c3d-a3f6-5e3515b4e251",
+      "name": "转换为北京本地时间",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.rq }}",
+        "format": "yyyy-MM-dd",
+        "options": {}
+      },
+      "id": "31fa1712-558f-410c-98d6-9b55fd45e1a5",
+      "name": "提取年月日",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "deta",
+              "stringValue": "={{ $json.data }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "74534596-c44a-4248-b942-38832605fdeb",
+      "name": "转化为json数据",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1800,
+        160
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"to\": \"新一℡¹⁵⁶⁷⁸⁹⁹⁸⁴¹⁷\",\n    \"type\": \"text\",\n    \"content\": {{JSON.stringify($json[\"deta\"])}}\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "2989b994-96fe-46bf-aee6-1c014777426c",
+      "name": "微信回复",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2000,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://cdn.jsdelivr.net/gh/WangGuibin/weather-action@master/logs/2024-02-22.txt",
+        "options": {}
+      },
+      "id": "66ae90a3-baac-4800-8cea-3be937f811ae",
+      "name": "回去慧语简报",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1560,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"to\": \"新一℡¹⁵⁶⁷⁸⁹⁹⁸⁴¹⁷\",\n    \"type\": \"text\",\n    \"content\": \"「天意通讯： 慧语简报，2月22日星期四，农历正月十三，工作愉快，平安喜乐 1．“世界超市”义乌开市，商户：工厂同步开工，过年都在接订单；  2．刚交付的新房，窗户一摇就晃？建设方、建管委：符合标准；  3．因少提存货减值超6亿，格力地产原董事长被通报批评，资产重组计划还未重启；  4．贵州普安龙吟镇山火两名扑救人员不幸牺牲；  5．湖北小伙反诈意识强险错过春晚60万大奖，民警送荣誉证书点赞；  6．Sora背后的人工智能大模型赛道，长三角多地正发力抢跑；  7．美国银行业并购潮持续，Capital One将以全股票形式收购Discover；  8．雨雪进入最强时段，武汉300多趟列车停运、河南大部分高速公路全线管制；  9．从总书记引用的典故，读懂一个“重要法宝”；  10．广东佛山三员工因在公司讲粤语被罚？官方：罚款违法，正调查；  11．上海：新一轮新基建贴息政策将于近期正式出台；  12．江西省政协原副主席胡强被查，多名下属曾向中央巡视组提供虚假材料。  【历史上的今天】 1. 1993年2月22日，《香魂女》和《喜宴》在电影节上共获金熊奖。 2. 1990年2月22日，国务院妇女儿童工作协调委员会在北京成立。 3. 1974年2月22日，毛泽东提出“三个世界”的理论。 时间进度条: ▓░░░░░░░░░░░░░ 2024年，您已经使用了14.28% 」 - - - - - - - - - - - - - - - 你好\"\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "50be5ab9-1c14-464e-899a-915479c188b8",
+      "name": "微信回复1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1420,
+        460
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Shanghai",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-25T06:49:58.000Z",
+  "versionId": "5745ee53-af65-42be-9a8d-bc42db9d1e9f"
+}
