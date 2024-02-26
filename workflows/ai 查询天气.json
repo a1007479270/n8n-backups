@@ -190,6 +190,17 @@
           }
         ]
       ]
+    },
+    "免费天气查询2": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-02-23T15:25:39.630Z",
@@ -556,8 +567,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2060,
-        240
+        1560,
+        280
       ]
     },
     {
@@ -570,8 +581,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2300,
-        260
+        1760,
+        280
       ]
     },
     {
@@ -658,6 +669,41 @@
         376
       ],
       "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "=https://weather.cma.cn/web/weather/56493.html",
+        "options": {}
+      },
+      "id": "441d4a07-89b7-4004-9c86-28b222f578ea",
+      "name": "免费天气查询2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        640,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "name"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3f89fba6-4e74-499f-89b4-b25a11a53358",
+      "name": "HTML",
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        1180
+      ]
     }
   ],
   "pinData": {},
@@ -665,6 +711,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-02-23T16:40:01.000Z",
-  "versionId": "fca2dd3e-c6e7-4c46-99fc-57fc1f70b3db"
+  "updatedAt": "2024-02-25T10:14:00.000Z",
+  "versionId": "42c70ba2-52f0-412d-95ba-6f137d42ae8f"
 }
