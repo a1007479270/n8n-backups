@@ -43,7 +43,7 @@
       "main": [
         [
           {
-            "node": "判断:是否有抖音链接",
+            "node": "/功能列表",
             "type": "main",
             "index": 0
           }
@@ -346,6 +346,127 @@
           }
         ]
       ]
+    },
+    "/功能列表": {
+      "main": [
+        [
+          {
+            "node": "/帮助",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "/QQ头像",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "/随机图片",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "/随机图片动漫",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "判断:是否有抖音链接",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "/QQ头像": {
+      "main": [
+        [
+          {
+            "node": "微信回复：QQ头像",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "/帮助": {
+      "main": [
+        [
+          {
+            "node": "微信回复：帮助",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "/随机图片": {
+      "main": [
+        [
+          {
+            "node": "随机图片",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "微信回复：/随机图片",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "随机图片": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "微信回复：/随机图片动漫",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "随机图片1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "/随机图片动漫": {
+      "main": [
+        [
+          {
+            "node": "随机图片1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-02-20T12:08:21.717Z",
@@ -391,7 +512,7 @@
       "typeVersion": 4.1,
       "position": [
         2580,
-        100
+        120
       ]
     },
     {
@@ -462,7 +583,7 @@
       "name": "SerpAPI",
       "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
       "position": [
-        2780,
+        3000,
         580
       ],
       "typeVersion": 1,
@@ -502,7 +623,7 @@
       "name": "Window Buffer Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "position": [
-        2620,
+        2840,
         580
       ],
       "typeVersion": 1
@@ -530,7 +651,7 @@
       "typeVersion": 3.2,
       "position": [
         2300,
-        360
+        380
       ]
     },
     {
@@ -562,7 +683,7 @@
       "typeVersion": 2,
       "position": [
         2020,
-        100
+        120
       ]
     },
     {
@@ -583,7 +704,7 @@
       "typeVersion": 3.2,
       "position": [
         2300,
-        100
+        120
       ]
     },
     {
@@ -605,7 +726,7 @@
       "typeVersion": 4.1,
       "position": [
         2860,
-        100
+        120
       ]
     },
     {
@@ -627,7 +748,7 @@
       "typeVersion": 4.1,
       "position": [
         3140,
-        100
+        120
       ]
     },
     {
@@ -649,7 +770,7 @@
       "typeVersion": 4.1,
       "position": [
         3360,
-        340
+        360
       ]
     },
     {
@@ -658,7 +779,7 @@
       "name": "Wikipedia",
       "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
       "position": [
-        2880,
+        3100,
         580
       ],
       "typeVersion": 1
@@ -670,7 +791,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        3000,
+        3220,
         580
       ]
     },
@@ -685,7 +806,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "position": [
         2620,
-        360
+        380
       ],
       "typeVersion": 1
     },
@@ -837,62 +958,6 @@
     },
     {
       "parameters": {
-        "options": {
-          "gl": "cn",
-          "hl": "zh-cn"
-        }
-      },
-      "id": "b63b76aa-0bd3-4e2f-a971-da959a36bf65",
-      "name": "SerpAPI1",
-      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
-      "position": [
-        2780,
-        1340
-      ],
-      "typeVersion": 1,
-      "credentials": {
-        "serpApi": {
-          "id": "4bAaYYshjUk98FCT",
-          "name": "SerpAPI account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "options": {
-          "baseURL": "https://api.openai.one/v1"
-        }
-      },
-      "id": "573e4a61-194b-48e2-bd77-b24f69d0091b",
-      "name": "Chat OpenAI1",
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "position": [
-        2480,
-        1340
-      ],
-      "typeVersion": 1,
-      "credentials": {
-        "openAiApi": {
-          "id": "Z0zPcRB4TroIt0w7",
-          "name": "OpenAi account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "sessionKey": "=chat_history_{{ $json.uid }}"
-      },
-      "id": "ad7f780f-cf10-4554-91af-dec6a710d23c",
-      "name": "Window Buffer Memory1",
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "position": [
-        2620,
-        1340
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
         "method": "POST",
         "url": "http://192.168.2.200:3001/webhook/msg/v2",
         "sendBody": true,
@@ -911,28 +976,6 @@
       "position": [
         3140,
         1100
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "5c188be8-80fd-4744-a0aa-597f36a6eb72",
-      "name": "Wikipedia1",
-      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
-      "position": [
-        2880,
-        1340
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {},
-      "id": "a106de15-6c52-466d-a9b5-d2d0b8956b7f",
-      "name": "Calculator1",
-      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
-      "typeVersion": 1,
-      "position": [
-        2980,
-        1360
       ]
     },
     {
@@ -1086,8 +1129,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3880,
-        100
+        3660,
+        120
       ]
     },
     {
@@ -1101,7 +1144,7 @@
       "name": "Tq_Tool",
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "position": [
-        3103,
+        3323,
         576
       ],
       "typeVersion": 1
@@ -1112,8 +1155,8 @@
       "name": "天气工作流",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
-        3700,
-        100
+        3480,
+        120
       ],
       "typeVersion": 1
     },
@@ -1127,8 +1170,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        4120,
-        100
+        3900,
+        120
       ]
     },
     {
@@ -1148,8 +1191,8 @@
       "name": "整理内容",
       "type": "n8n-nodes-base.set",
       "position": [
-        4340,
-        100
+        4120,
+        120
       ],
       "typeVersion": 3.2
     },
@@ -1163,7 +1206,7 @@
       "name": "Chat OpenAI2",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "position": [
-        2320,
+        2540,
         580
       ],
       "typeVersion": 1,
@@ -1173,9 +1216,356 @@
           "name": "OpenAi account 3"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "39b8c723-beae-4ccc-8fba-decaf69e57e7",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "/",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "81366ad4-a080-4193-a6fa-df7e6e3225f7",
+      "name": "/功能列表",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1cbdf2d9-2602-441e-8be1-ad98ddbadba1",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "/帮助",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "37d7302b-c03c-4918-b261-e1a5ec889ef9",
+      "name": "/帮助",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2340,
+        -620
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1cbdf2d9-2602-441e-8be1-ad98ddbadba1",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "/QQ头像",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0ee0d0fc-979f-414d-81bd-e3fb21a75f28",
+      "name": "/QQ头像",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2340,
+        -400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"type\":\"fileUrl\",\"content\":\" https://q.qlogo.cn/headimg_dl?dst_uin={{ $json.body.content.slice(5) }}&spec=640\"}} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "73d4c077-6c22-4947-b5c9-b9452cb1bbd7",
+      "name": "微信回复：QQ头像",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2640,
+        -400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"content\":\"帮助命令大全\\n/QQ头像+QQ号（获取QQ头像）\\n/随机图片（获取随机图片）\\n/随机图片动漫（获取随机动漫图片） \"}} ",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "c38875a6-9ae9-4c5c-a857-578cb4514410",
+      "name": "微信回复：帮助",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2640,
+        -640
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1cbdf2d9-2602-441e-8be1-ad98ddbadba1",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "/随机图片",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fde5a602-b772-4f2f-8663-519c3b1f6ef9",
+      "name": "/随机图片",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2340,
+        -800
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "url",
+              "type": "objectValue",
+              "objectValue": "={{ $json.data }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "5b13166d-774b-4d0e-8597-c9dbdb21b224",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2860,
+        -820
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://imgapi.cn/api.php?gs=json",
+        "options": {}
+      },
+      "id": "9c8ac524-f781-460e-92b6-1fea03944b17",
+      "name": "随机图片",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2620,
+        -820
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "url",
+              "type": "objectValue",
+              "objectValue": "={{ $json.data }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "286aafc9-3f8b-46c2-a738-bf57bbab5edc",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        2860,
+        -1020
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://imgapi.cn/api.php?fl=dongman&gs=json",
+        "options": {}
+      },
+      "id": "74d59773-1441-4ba6-92e5-57ab9a65a631",
+      "name": "随机图片1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2620,
+        -1020
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1cbdf2d9-2602-441e-8be1-ad98ddbadba1",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "/随机图片动漫",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d79e67f0-7006-4bdb-b098-1993a3742c25",
+      "name": "/随机图片动漫",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2340,
+        -1000
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"type\":\"fileUrl\",\"content\":\"{{ $json[\"url\"][\"imgurl\"] }}\"}} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "a0e924b4-ff57-4a39-8dcc-8381402e6d6e",
+      "name": "微信回复：/随机图片动漫",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3100,
+        -1020
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"type\":\"fileUrl\",\"content\":\"{{ $json[\"url\"][\"imgurl\"] }}\"}} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "47ccfe1f-f7f3-4aca-b8c7-847e58c7ef62",
+      "name": "微信回复：/随机图片",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3100,
+        -820
+      ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "微信Webhook": [
+      {
+        "json": {
+          "headers": {
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br",
+            "content-length": "1799",
+            "content-type": "multipart/form-data;boundary=--------------------------084119615885489169872782",
+            "user-agent": "node-fetch",
+            "host": "192.168.2.200:6060",
+            "connection": "close"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "source": "{\"room\":\"\",\"to\":{\"_events\":{},\"_eventsCount\":0,\"id\":\"@0702912221de95e7712ca43856b395b234af423f1199a1f0fd47c79c6629c7ff\",\"payload\":{\"alias\":\"\",\"avatar\":\"/cgi-bin/mmwebwx-bin/webwxgeticon?seq=1048753778&username=@0702912221de95e7712ca43856b395b234af423f1199a1f0fd47c79c6629c7ff&skey=@crypt_93905fb2_91c7a61069608a886767adfb3d4a9b0d\",\"friend\":false,\"gender\":1,\"id\":\"@0702912221de95e7712ca43856b395b234af423f1199a1f0fd47c79c6629c7ff\",\"name\":\"天意通讯\",\"phone\":[],\"signature\":\"我就是我 不一样的烟火\",\"star\":false,\"type\":1}},\"from\":{\"_events\":{},\"_eventsCount\":0,\"id\":\"@8863cd05b32cfbc8db3c0015b004d84aee4c51e03136bbc9de587cbc2033db24\",\"payload\":{\"address\":\"\",\"alias\":\"\",\"avatar\":\"/cgi-bin/mmwebwx-bin/webwxgeticon?seq=805224415&username=@8863cd05b32cfbc8db3c0015b004d84aee4c51e03136bbc9de587cbc2033db24&skey=@crypt_93905fb2_91c7a61069608a886767adfb3d4a9b0d\",\"city\":\"Yibin\",\"friend\":true,\"gender\":1,\"id\":\"@8863cd05b32cfbc8db3c0015b004d84aee4c51e03136bbc9de587cbc2033db24\",\"name\":\"新一℡¹⁵⁶⁷⁸⁹⁹⁸⁴¹⁷\",\"phone\":[],\"province\":\"Sichuan\",\"signature\":\"天行健，君子以自强不息；地势坤，君子以厚德载物\",\"star\":false,\"weixin\":\"\",\"type\":1}}}",
+            "isSystemEvent": "0",
+            "isMentioned": "0",
+            "type": "text",
+            "content": "/QQ头像1007479270"
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "timezone": "Asia/Shanghai",
@@ -1186,6 +1576,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-02-24T18:55:19.000Z",
-  "versionId": "7802c68f-0ac4-4381-a6c7-704a22eb57d8"
+  "updatedAt": "2024-02-26T18:32:35.000Z",
+  "versionId": "79eb6a4c-4fcf-4310-8a50-091b302c70c8"
 }
