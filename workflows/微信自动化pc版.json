@@ -1,0 +1,36 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-02-27T15:15:01.486Z",
+  "id": "wGyHEdIX2m5onC4m",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "微信自动化pc版",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "5f6d1608-d233-40f8-9842-05397c25885e",
+        "options": {}
+      },
+      "id": "4cb6d8bf-8edf-4194-bf44-f4b7d4721839",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        360
+      ],
+      "webhookId": "5f6d1608-d233-40f8-9842-05397c25885e"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-02-27T15:15:01.486Z",
+  "versionId": "7c023a38-3eaa-48a9-86b0-29aa272b9971"
+}
