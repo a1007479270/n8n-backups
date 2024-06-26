@@ -1,0 +1,1557 @@
+{
+  "active": false,
+  "connections": {
+    "微信Webhook": {
+      "main": [
+        [
+          {
+            "node": "处理： 用户名JSON规则化",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "解析:抖音视频": {
+      "main": [
+        [
+          {
+            "node": "微信回复：视频链接",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "处理： 用户名JSON规则化": {
+      "main": [
+        [
+          {
+            "node": "判断：个人消息",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "判断：群消息",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "判断：个人消息": {
+      "main": [
+        [
+          {
+            "node": "/功能列表",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SerpAPI": {
+      "ai_tool": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "判断:是否有抖音链接": {
+      "main": [
+        [
+          {
+            "node": "提取:抖音分享网址",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI：数据入参处理",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI：数据入参处理": {
+      "main": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "提取:抖音分享网址": {
+      "main": [
+        [
+          {
+            "node": "解析:抖音视频",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "微信回复：视频链接": {
+      "main": [
+        [
+          {
+            "node": "微信回复：视频文件",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversational Agent": {
+      "main": [
+        [
+          {
+            "node": "微信回复:ai回答",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "提取:抖音分享网址1": {
+      "main": [
+        [
+          {
+            "node": "解析:抖音视频1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "判断:是否有抖音链接1": {
+      "main": [
+        [
+          {
+            "node": "提取:抖音分享网址1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI：数据入参处理1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "微信回复：视频链接1": {
+      "main": [
+        [
+          {
+            "node": "微信回复：视频文件1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "解析:抖音视频1": {
+      "main": [
+        [
+          {
+            "node": "微信回复：视频链接1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI：数据入参处理1": {
+      "main": [
+        [
+          {
+            "node": "Conversational Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "开启指定群消息": {
+      "main": [
+        [
+          {
+            "node": "开启被@后回复",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "开启被@后回复": {
+      "main": [
+        [
+          {
+            "node": "判断:是否有抖音链接1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "判断：群消息": {
+      "main": [
+        [
+          {
+            "node": "开启指定群消息",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversational Agent1": {
+      "main": [
+        [
+          {
+            "node": "微信回复:ai回答1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "地区编码查询1": {
+      "main": [
+        [
+          {
+            "node": "免费天气查询",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tq_Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "天气工作流": {
+      "main": [
+        [
+          {
+            "node": "地区编码查询1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "免费天气查询": {
+      "main": [
+        [
+          {
+            "node": "整理内容",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat OpenAI2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Conversational Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Conversational Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "/功能列表": {
+      "main": [
+        [
+          {
+            "node": "/帮助",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "/QQ头像",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "/随机图片",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "/随机图片动漫",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "判断:是否有抖音链接",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "/QQ头像": {
+      "main": [
+        [
+          {
+            "node": "微信回复：QQ头像",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "/帮助": {
+      "main": [
+        [
+          {
+            "node": "微信回复：帮助",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "/随机图片": {
+      "main": [
+        [
+          {
+            "node": "随机图片",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "微信回复：/随机图片",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "随机图片": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "微信回复：/随机图片动漫",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "随机图片1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "/随机图片动漫": {
+      "main": [
+        [
+          {
+            "node": "随机图片1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-07T15:38:09.152Z",
+  "id": "m2vXt01tC4JeNV2i",
+  "meta": null,
+  "name": "微信机器人工作流",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "9caaad2c-e190-4f02-bc3a-dc7eb33aaed2",
+        "options": {}
+      },
+      "id": "9c05d616-1fcb-4bb4-b1c0-8bc9836be3fa",
+      "name": "微信Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        -860,
+        2040
+      ],
+      "webhookId": "9caaad2c-e190-4f02-bc3a-dc7eb33aaed2"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.cooluc.com/?url= {{ $json.body.content }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fc832e4a-20b1-449c-8595-b9ecdd190f40",
+      "name": "解析:抖音视频",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        420,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "fcd44bb1-80f0-4cbe-839a-11f4e5857fd3",
+              "leftValue": "={{ $json.room.payload.topic }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "7f87d051-521c-4ac5-9a0e-5e3a27fd2f24",
+              "leftValue": "={{ $json.body.isSystemEvent }}",
+              "rightValue": "=0",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "799d1e99-8a31-41aa-8f8f-8f1677ebd81c",
+      "name": "判断：个人消息",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -420,
+        1840
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={{ $json.body.source }}",
+        "options": {}
+      },
+      "id": "b09cb033-6933-4b49-9266-2739c903b895",
+      "name": "处理： 用户名JSON规则化",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        -660,
+        2040
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "gl": "cn",
+          "hl": "zh-cn"
+        }
+      },
+      "id": "d1a1d83e-8da8-4fb7-89ee-e23d51eb5c68",
+      "name": "SerpAPI",
+      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
+      "position": [
+        840,
+        2060
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {
+          "baseURL": "https://api.openai.one/v1"
+        }
+      },
+      "id": "19a8cd08-4a6f-4258-ae8c-35a7f0c6ed77",
+      "name": "Chat OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        320,
+        2060
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "sessionKey": "=chat_history_{{ $json.uid }}"
+      },
+      "id": "7c6c439d-a529-4b18-ae61-5aefe9c5bc3d",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        680,
+        2060
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "uid",
+              "stringValue": "={{ $json.from.payload.name }}"
+            },
+            {
+              "name": "input",
+              "stringValue": "={{ $json.body.content }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "5b2c6006-2d37-44e0-8e91-26c9cb0a3160",
+      "name": "AI：数据入参处理",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        140,
+        1860
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b1d0a944-e265-483f-b751-a05d431ad36e",
+              "leftValue": "={{ $('微信Webhook').item.json.body.content }}",
+              "rightValue": "https://v.douyin.com/\\w{6,11}/",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "ea8a6b84-770d-43bb-bd11-22d0695a2eb9",
+      "name": "判断:是否有抖音链接",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -140,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "body.content",
+              "stringValue": "={{ $json.body.content.extractUrl() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "12cc3a69-77ec-421c-9461-5861d0239c4a",
+      "name": "提取:抖音分享网址",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        140,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"content\":\" {{ $('解析:抖音视频').item.json[\"msg\"] }}，视频标题>>> {{ $('解析:抖音视频').item.json[\"desc\"] }}，视频链接>>>{{ $('解析:抖音视频').item.json[\"video\"] }}\"}} ",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "13913675-abdf-473d-8436-3077f572d4d5",
+      "name": "微信回复：视频链接",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        700,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"type\":\"fileUrl\",\"content\":\"{{ $('解析:抖音视频').item.json[\"video\"] }}\"}} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "73ed1caa-57c7-4e1b-a22d-1f196a2aedae",
+      "name": "微信回复：视频文件",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"content\":\" {{ $json[\"output\"] }}\"}}\n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "f16167d3-20cb-4535-aeec-01b301f7f25b",
+      "name": "微信回复:ai回答",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1200,
+        1840
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "aaf4edfb-5775-40a7-ae53-bbac5517f0a1",
+      "name": "Wikipedia",
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "position": [
+        940,
+        2060
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "1ecf9efe-5586-4aa9-b0e3-bd5a072b69f5",
+      "name": "Calculator",
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Assistant is a large language model trained by OpenAI.\n\nAssistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.\n\nAssistant is constantly learning and improving, and its capabilities are constantly evolving. It is able to process and understand large amounts of text, and can use this knowledge to provide accurate and informative responses to a wide range of questions. Additionally, Assistant is able to generate its own text based on the input it receives, allowing it to engage in discussions and provide explanations and descriptions on a wide range of topics.\n\nOverall, Assistant is a powerful system that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.\n最后以中文来对话。"
+        }
+      },
+      "id": "79a3b0cf-8256-4faa-ae93-54ee555e1955",
+      "name": "Conversational Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        460,
+        1860
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b1d0a944-e265-483f-b751-a05d431ad36e",
+              "leftValue": "={{ $('微信Webhook').item.json.body.content }}",
+              "rightValue": "https://v.douyin.com/\\w{6,11}/",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "c7bcfe67-5952-4090-ad21-b4fd995dacb3",
+      "name": "判断:是否有抖音链接1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -140,
+        2360
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.cooluc.com/?url= {{ $json.body.content }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "67652c60-e69b-4241-933e-eb47c95a9d83",
+      "name": "解析:抖音视频1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        420,
+        2360
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "body.content",
+              "stringValue": "={{ $json.body.content.extractUrl() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5694d7b2-ad9f-4840-ac82-a15ae2b0689c",
+      "name": "提取:抖音分享网址1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        140,
+        2360
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "uid",
+              "stringValue": "={{ $json.from.payload.name }}"
+            },
+            {
+              "name": "input",
+              "stringValue": "={{ $json.body.content.substring(6) }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "ce7e92cc-4b9b-4543-afd2-8345d9490227",
+      "name": "AI：数据入参处理1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        140,
+        2580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"room\"][\"payload\"][\"topic\"] }}\",\n\"isRoom\": true,\n\"data\":{\"content\":\" {{ $json[\"msg\"] }}，视频标题>>> {{$json[\"desc\"] }}，视频链接>>>{{$json[\"video\"] }}\"}\n} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "374f0390-6c65-4694-bb46-e62f09b12146",
+      "name": "微信回复：视频链接1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        680,
+        2360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"room\"][\"payload\"][\"topic\"] }}\",\"isRoom\": true,\"data\":{\"type\":\"fileUrl\",\"content\":\"{{ $('解析:抖音视频1').item.json[\"video\"] }}\"}} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "8ee73bf6-1044-47fe-a13e-ae714e4fb679",
+      "name": "微信回复：视频文件1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        2360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"room\"][\"payload\"][\"topic\"] }}\",\n\"isRoom\": true,\n\"data\":{\"content\":\"@{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }} {{ $json[\"output\"] }}\"}\n}\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "42995d55-1368-4377-b596-42b77e49d0a7",
+      "name": "微信回复:ai回答1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        2580
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "fd7ff80d-a72c-48d7-8608-ade6661cad85",
+              "leftValue": "={{ $json.room.payload.topic }}",
+              "rightValue": "我自己",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "a45dfede-7f0a-4c58-8765-a64d0c3f6e12",
+      "name": "开启指定群消息",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -420,
+        2580
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "fd7ff80d-a72c-48d7-8608-ade6661cad85",
+              "leftValue": "={{ $json.body.isMentioned }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "ff223d58-f0f5-49e4-9a65-6e67dbd528ce",
+      "name": "开启被@后回复",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -420,
+        2760
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8348d7c2-bd0a-4669-8984-26b0e7e8fd75",
+              "leftValue": "={{ $json.room.payload.topic }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "cab28e76-cde1-41e4-a32b-67aa5ef400dc",
+      "name": "判断：群消息",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -420,
+        2360
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Assistant is a large language model trained by OpenAI.\n\nAssistant is designed to be able to assist with a wide range of tasks, from answering simple questions to providing in-depth explanations and discussions on a wide range of topics. As a language model, Assistant is able to generate human-like text based on the input it receives, allowing it to engage in natural-sounding conversations and provide responses that are coherent and relevant to the topic at hand.\n\nAssistant is constantly learning and improving, and its capabilities are constantly evolving. It is able to process and understand large amounts of text, and can use this knowledge to provide accurate and informative responses to a wide range of questions. Additionally, Assistant is able to generate its own text based on the input it receives, allowing it to engage in discussions and provide explanations and descriptions on a wide range of topics.\n\nOverall, Assistant is a powerful system that can help with a wide range of tasks and provide valuable insights and information on a wide range of topics. Whether you need help with a specific question or just want to have a conversation about a particular topic, Assistant is here to assist.\n最后以中文来对话。"
+        }
+      },
+      "id": "f81992c2-eecd-4ca0-b973-f67ae02b81be",
+      "name": "Conversational Agent1",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        460,
+        2200
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "qun",
+              "value": "={\n\"to\":\"1111,ddd\",\n\"isRoom\": \"12222\",\"data\":\"type\":\"333\"\n} \n\n"
+            },
+            {
+              "name": "repo.name",
+              "value": "n8n-backups"
+            },
+            {
+              "name": "repo.path",
+              "value": "workflows/"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f563bb02-7c0b-4be6-850a-67e79042705e",
+      "name": "群变量",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -400,
+        2120
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "https://geoapi.qweather.com/v2/city/lookup?location=%E5%8D%97%E6%BA%AA&key=41e87bd10ea74c61a07774a1f7795e2c",
+        "options": {}
+      },
+      "id": "e1da222e-4345-4cfe-8643-707a2c843edb",
+      "name": "地区编码查询1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1500,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "name": "Tq_Tool",
+        "description": "调用此工具以获取天气内容。输入应该是一个字符串化的HTTP查询参数，如下所示：“地区名”。“地区名”参数应包含有效的地区名称。可以是市名，可以是区名，可以是县名。",
+        "workflowId": "={{ $workflow.id }}",
+        "responsePropertyName": "page_content"
+      },
+      "id": "fb01a56b-4ccc-4aa7-a83c-a5cc1805ff78",
+      "name": "Tq_Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "position": [
+        1163,
+        2056
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {},
+      "id": "6ef60830-c11e-4340-8f83-6226e7542464",
+      "name": "天气工作流",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        1320,
+        1600
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "url": "=http://t.weather.itboy.net/api/weather/city/{{ $json.location[0].id }}",
+        "options": {}
+      },
+      "id": "ae279bd7-5e56-4575-888f-2f3fbde9e3d5",
+      "name": "免费天气查询",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1740,
+        1600
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "page_content",
+              "stringValue": "={{ $json.data }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "e30a30d0-8e1c-45f7-9ce0-dece14e87337",
+      "name": "整理内容",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        1960,
+        1600
+      ],
+      "typeVersion": 3.2
+    },
+    {
+      "parameters": {
+        "options": {
+          "baseURL": "https://ai.tentech.top/v1"
+        }
+      },
+      "id": "d5b1ce82-89f6-40f1-ba69-9b97372d1a92",
+      "name": "Chat OpenAI2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [
+        380,
+        2060
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "39b8c723-beae-4ccc-8fba-decaf69e57e7",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "/",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7eecff4e-ccf6-4dda-8526-1f9f81be7c86",
+      "name": "/功能列表",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -140,
+        1380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1cbdf2d9-2602-441e-8be1-ad98ddbadba1",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "/帮助",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "670e72a1-18d9-42a1-b94b-8567ae9f0e8a",
+      "name": "/帮助",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        180,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1cbdf2d9-2602-441e-8be1-ad98ddbadba1",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "/QQ头像",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "59f882fe-365e-449a-8620-a0216f69c9e6",
+      "name": "/QQ头像",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        180,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"type\":\"fileUrl\",\"content\":\" https://q.qlogo.cn/headimg_dl?dst_uin={{ $json.body.content.slice(5) }}&spec=640\"}} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "c058e680-bc0c-4f90-9b1a-4fb224452f68",
+      "name": "微信回复：QQ头像",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        480,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"content\":\"帮助命令大全\\n/QQ头像+QQ号（获取QQ头像）\\n/随机图片（获取随机图片）\\n/随机图片动漫（获取随机动漫图片） \"}} ",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "55f12006-8647-4621-95b8-b95aa93797e3",
+      "name": "微信回复：帮助",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        480,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1cbdf2d9-2602-441e-8be1-ad98ddbadba1",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "/随机图片",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "17c7e3b6-a58a-420e-af48-c7b063c85992",
+      "name": "/随机图片",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        180,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "url",
+              "type": "objectValue",
+              "objectValue": "={{ $json.data }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "783c5f83-d5fd-4b0f-8537-df284d6df8c5",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        700,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://imgapi.cn/api.php?gs=json",
+        "options": {}
+      },
+      "id": "dd76633d-8fea-4f62-8497-616470123b52",
+      "name": "随机图片",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        460,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "url",
+              "type": "objectValue",
+              "objectValue": "={{ $json.data }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "f2668fac-e93d-49f9-b40a-0b4fb1df287d",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        700,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://imgapi.cn/api.php?fl=dongman&gs=json",
+        "options": {}
+      },
+      "id": "a6dc54a3-eae2-4974-95b8-d3a0e72582de",
+      "name": "随机图片1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1cbdf2d9-2602-441e-8be1-ad98ddbadba1",
+              "leftValue": "={{ $json.body.content }}",
+              "rightValue": "/随机图片动漫",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6f62a021-9ab6-4292-8cbb-bebc1dcea58c",
+      "name": "/随机图片动漫",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        180,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"type\":\"fileUrl\",\"content\":\"{{ $json[\"url\"][\"imgurl\"] }}\"}} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "ba3063f5-d7b5-4427-b6df-4a8c729a1948",
+      "name": "微信回复：/随机图片动漫",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        940,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.2.200:3001/webhook/msg/v2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\":\"{{ $('处理： 用户名JSON规则化').item.json[\"from\"][\"payload\"][\"name\"] }}\",\"data\":{\"type\":\"fileUrl\",\"content\":\"{{ $json[\"url\"][\"imgurl\"] }}\"}} \n\n",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "id": "9e343a91-d6f1-4a1d-82fc-9dcb3edad66f",
+      "name": "微信回复：/随机图片",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        940,
+        660
+      ]
+    }
+  ],
+  "pinData": {
+    "微信Webhook": [
+      {
+        "json": {
+          "headers": {
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br",
+            "content-length": "1799",
+            "content-type": "multipart/form-data;boundary=--------------------------084119615885489169872782",
+            "user-agent": "node-fetch",
+            "host": "192.168.2.200:6060",
+            "connection": "close"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "source": "{\"room\":\"\",\"to\":{\"_events\":{},\"_eventsCount\":0,\"id\":\"@0702912221de95e7712ca43856b395b234af423f1199a1f0fd47c79c6629c7ff\",\"payload\":{\"alias\":\"\",\"avatar\":\"/cgi-bin/mmwebwx-bin/webwxgeticon?seq=1048753778&username=@0702912221de95e7712ca43856b395b234af423f1199a1f0fd47c79c6629c7ff&skey=@crypt_93905fb2_91c7a61069608a886767adfb3d4a9b0d\",\"friend\":false,\"gender\":1,\"id\":\"@0702912221de95e7712ca43856b395b234af423f1199a1f0fd47c79c6629c7ff\",\"name\":\"天意通讯\",\"phone\":[],\"signature\":\"我就是我 不一样的烟火\",\"star\":false,\"type\":1}},\"from\":{\"_events\":{},\"_eventsCount\":0,\"id\":\"@8863cd05b32cfbc8db3c0015b004d84aee4c51e03136bbc9de587cbc2033db24\",\"payload\":{\"address\":\"\",\"alias\":\"\",\"avatar\":\"/cgi-bin/mmwebwx-bin/webwxgeticon?seq=805224415&username=@8863cd05b32cfbc8db3c0015b004d84aee4c51e03136bbc9de587cbc2033db24&skey=@crypt_93905fb2_91c7a61069608a886767adfb3d4a9b0d\",\"city\":\"Yibin\",\"friend\":true,\"gender\":1,\"id\":\"@8863cd05b32cfbc8db3c0015b004d84aee4c51e03136bbc9de587cbc2033db24\",\"name\":\"新一℡¹⁵⁶⁷⁸⁹⁹⁸⁴¹⁷\",\"phone\":[],\"province\":\"Sichuan\",\"signature\":\"天行健，君子以自强不息；地势坤，君子以厚德载物\",\"star\":false,\"weixin\":\"\",\"type\":1}}}",
+            "isSystemEvent": "0",
+            "isMentioned": "0",
+            "type": "text",
+            "content": "/QQ头像1007479270"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-13T05:56:54.000Z",
+  "versionId": "7fe341ea-5a1e-4b91-8ce5-a1f9ee58d72d"
+}
