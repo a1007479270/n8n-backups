@@ -1,0 +1,182 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "自定义变量",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "自定义变量": {
+      "main": [
+        [
+          {
+            "node": "zerotier列出当前网络​id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "zerotier列出当前网络​id": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-13T05:57:13.532Z",
+  "id": "VgRpC1wAnPSDIXjG",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "6fe5cfa3-5446-40c6-9278-165e60a750b7",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        820,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {}
+      },
+      "id": "4a00a2f2-1831-4719-93e1-c29bb022fea3",
+      "name": "Convert to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1720,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.zerotier.com/api/v1/network/8056c2e21cce0a3a/member",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=token {{ $('自定义变量').params[\"assignments\"][\"assignments\"][0][\"value\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0816e7e2-011e-4ba3-9a1b-a7a07dc0cac3",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1500,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "01915880-f9b0-4e1f-b2b3-904e765f63e0",
+              "name": "ZT_TOKEN",
+              "value": "FxlH9HR5iG1D3OeNnjMzzfKCqoxLbvVG n8n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "685c517c-7b32-4fe9-8cb0-24776bdd870e",
+      "name": "自定义变量",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1020,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.zerotier.com/api/v1/network",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=token {{ $json[\"ZT_TOKEN\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e359c313-55b7-4fac-9f88-9265e74d2d10",
+      "name": "zerotier列出当前网络​id",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1220,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "11",
+              "value": "={{ $('zerotier列出当前网络​id').item.json[\"totalMemberCount\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "098ffaa7-6030-4593-84a1-b51fdfe5392e",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1560,
+        440
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-13T10:42:55.000Z",
+  "versionId": "571bcff6-1601-4af8-a1d3-38ba3f12d75d"
+}
