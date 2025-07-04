@@ -1,6 +1,6 @@
 {
   "createdAt": "2025-07-02T21:42:01.304Z",
-  "updatedAt": "2025-07-02T21:45:44.000Z",
+  "updatedAt": "2025-07-03T10:57:08.000Z",
   "id": "s7vOySanj62kR53y",
   "name": "将-n8n-工作流程备份到-github",
   "active": true,
@@ -223,7 +223,7 @@
     },
     {
       "parameters": {
-        "content": "### Retrieve previous file names from Github",
+        "content": "### Retrieve previous file names from Github\n\n开源地址：https://n8n.io/workflows/4064-automated-daily-workflow-backup-to-github/",
         "height": 380,
         "width": 300,
         "color": 5
@@ -408,7 +408,7 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "cde6a6f4-b448-4bb0-ad4d-f7d7d6f5d865",
+  "versionId": "ddcf9874-f158-4659-ac7d-a9cbd28348ff",
   "triggerCount": 1,
   "tags": []
 }
